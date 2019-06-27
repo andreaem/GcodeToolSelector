@@ -1,15 +1,14 @@
 # GcodeToolSelector
 Changes G-Code to facilitate a lathe with multiple cutting heads
 
+<B>To run type:</b>
 
-To run type:
-
-python3 GcodeInterpreter.py
+<i> python3 GcodeInterpreter.py </i>
 
 This will look for a file called gcode.ngc in the same directory as the python file, it will convert based on the following rules, and then output a file called output.ngc
 
 
-***Looks for all codes beginning with the letter "T" ***
+<b>***Looks for all codes beginning with the letter "T" ***</b>
 
 -If it's the word TAILSTOCKUNFIXED it replaces it with TAILSTOCKFIXED, showing that the program was run.
 
@@ -25,8 +24,8 @@ G53 G0 A-0.125
 
 -If it's a T not followed by two digits or the characters above it reports an error and stops.
 
-*** OTHERWISE ***
+<b>*** OTHERWISE ***</b>
 
 if the TOOL NUMBER is less than the TOOL PIVOT (which has been set to 15 at the top) it reproduced the line of code without changes
 
-if the TOOL NUMBER is greater than the TOOL PIVOT, it skips any X axis command
+if the TOOL NUMBER is greater than the TOOL PIVOT, it adds a ; in front of the line if it's an X axis command
