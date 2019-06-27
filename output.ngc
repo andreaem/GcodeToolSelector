@@ -1,12 +1,13 @@
 G21
 
-TAILSTOCKFIXED
+;TAILSTOCKFIXED
 G64 G40 G18 G7 G95
 
 (TOOL #21 C-Drill)
 
 G53 G0 X-0.125
 
+; Adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T21 M6 G43
@@ -25,6 +26,7 @@ M1
 
 (TOOL #22 3/4 DRILL)
 
+; Adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T22 M6 G43
@@ -41,6 +43,7 @@ M1
 
 (TOOL #7  Facing  )
 
+; Adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T07 M6 G43
@@ -145,6 +148,7 @@ M1
 
 G53 G0 X-0.125
 
+; Adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T01 M6 G43
@@ -225,6 +229,7 @@ M1
 
 G53 G0 X-0.125
 
+; Adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T08 M6 G43
@@ -327,6 +332,7 @@ M1
 
 G53 G0 X-0.125
 
+; Adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T05 M6 G43
