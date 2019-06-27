@@ -1,4 +1,4 @@
-G21
+;This file has been processed with the GcodeInterpreterG21
 
 ;TAILSTOCKFIXED
 G64 G40 G18 G7 G95
@@ -7,14 +7,30 @@ G64 G40 G18 G7 G95
 
 G53 G0 X-0.125
 
-; Adding 2 lines to home both tools before a tool change
+; Tool change detected, adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T21 M6 G43
 
 G90
 
+G97 S681 M3
+
+;X motion on Z only tool - G00 X0. Z27.94
+
 M8
+
+G00 Z5.08
+
+G00 Z2.54
+
+G01 Z-6.35 F.036
+
+G00 Z5.08
+
+G00 Z127.
+
+;X motion on Z only tool - G00 X254.
 
 M5
 
@@ -26,12 +42,50 @@ M1
 
 (TOOL #22 3/4 DRILL)
 
-; Adding 2 lines to home both tools before a tool change
+G53 G0 X-0.125
+
+; Tool change detected, adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T22 M6 G43
 
+G90 S397 M3
+
+G97 S397 M3
+
+;X motion on Z only tool - G00 X0. Z27.94
+
 M8
+
+G00 Z5.08
+
+G00 Z2.54
+
+G01 Z-6.985 F.036
+
+G00 Z2.54
+
+G00 Z-4.445
+
+G01 Z-16.51
+
+G00 Z2.54
+
+G00 Z-13.97
+
+G01 Z-26.035
+
+G00 Z2.54
+
+G00 Z-23.495
+
+G01 Z-27.1
+
+G00 Z5.08
+
+G00 Z127.
+
+;X motion on Z only tool - G00 X254.
 
 M5
 
@@ -43,7 +97,9 @@ M1
 
 (TOOL #7  Facing  )
 
-; Adding 2 lines to home both tools before a tool change
+G53 G0 X-0.125
+
+; Tool change detected, adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T07 M6 G43
@@ -148,7 +204,7 @@ M1
 
 G53 G0 X-0.125
 
-; Adding 2 lines to home both tools before a tool change
+; Tool change detected, adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T01 M6 G43
@@ -229,7 +285,7 @@ M1
 
 G53 G0 X-0.125
 
-; Adding 2 lines to home both tools before a tool change
+; Tool change detected, adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T08 M6 G43
@@ -332,7 +388,7 @@ M1
 
 G53 G0 X-0.125
 
-; Adding 2 lines to home both tools before a tool change
+; Tool change detected, adding 2 lines to home both tools before a tool change
 G53 G0 X-0.125
 G53 G0 A-0.125
 T05 M6 G43

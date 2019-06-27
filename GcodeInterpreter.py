@@ -22,13 +22,12 @@ while (code):
         #Switch the text to mark the file fixed
         if bool (re.search("TAILSTOCKUNFIXED", code)) :
             ngcO (";TAILSTOCKFIXED")
-            print ("FOUND")
         #Its a set tool command so home everyone 
         elif bool (re.search("^T\d\d\s.*", code)) :            
-            print ("TOOL CHANGE, to number ", code[1:3]) #all tool selections are of the form T## 
+            #print ("TOOL CHANGE, to number ", code[1:3]) #all tool selections are of the form T## 
             toolnum = code[1:3]            
             #Send all tool arms home and then set tool
-            ngcO ("; Adding 2 lines to home both tools before a tool change")
+            ngcO ("; Tool change detected, adding 2 lines to home both tools before a tool change")
             ngcO ("G53 G0 X-0.125") 
             ngcO ("G53 G0 A-0.125")
             ngcO (code)
@@ -46,10 +45,11 @@ while (code):
             ngcO (code)
         else :
             #these are Z only tools so remove any X motion
-            if re.search ("^G\d\d\s.X*",code):
+            if re.search ("^G\d\d\sX.*",code):
+                print ("xmotion")
                 code = ";X motion on Z only tool - " + code
-            else:
-                ngcO (code)
+            #else:
+            ngcO (code)
     #Get the next line of code
     code = f.readline()
 
