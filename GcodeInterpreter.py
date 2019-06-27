@@ -1,20 +1,22 @@
 import re
 
-
 toolpivot = 15 #Tools 1-8 are on the turret and move in X and Z. 21-28 are on the tailstock, for drilling and the like.
+toolnum = False #there is no tool being used yet
 
+#open read and write filestreams
 w = open("output.ngc", "w")
-
-def ngcO (line, fileio = w): #ngc output line
-    line = line + "\n"
-    w.write (line);
-    pass
-
+w.write(";This file has been processed with the GcodeInterpreter")
 f = open("gcode.ngc", "r")
 
+'''
+Write a line of gocde to the file
+'''
+def ngcO (line, fileio = w):
+    line = line + "\n"
+    w.write (line);
 
+#read first line of code and itterate until end of file
 code = f.readline()
-toolnum = False
 while (code):
     if code[0] == "T":
         #Switch the text to mark the file fixed
@@ -35,19 +37,22 @@ while (code):
             ngcO ("ERROR A FAULTY TOOL CODE WAS FOUND")
             break 
     else:
-        #ngcO (code[:-1]) #-1 gets rid of the line break
-    
+        #this command isn't a toolchange 
+        
         if int(toolnum) < toolpivot:
+            #either the toolnum has not been set, int(False)=0 or 
+            #the tool is less than the tool pivot so
             #These tools run on x and z axis so no changes made
             ngcO (code)
         else :
-            #these are Z only tools
+            #these are Z only tools so remove any X motion
             if re.search ("^G\d\d\s.X*",code):
-                #print ("X motion found in z only tool, DELETED")
-                code = ";" + code
+                code = ";X motion on Z only tool - " + code
             else:
                 ngcO (code)
-
+    #Get the next line of code
     code = f.readline()
-    
+
+#clean up open filestreams
+f.close()
 w.close()
