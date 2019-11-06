@@ -46,7 +46,6 @@ while (code):
         else :
             #these are Z only tools so remove any X motion
             if re.search ("^G\d\d\sX.*",code):
-                print ("xmotion")
                 code = ";X motion on Z only tool - " + code
             #else:
             ngcO (code)
